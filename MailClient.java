@@ -11,14 +11,17 @@ public class MailClient
     private MailServer server;
     // The user running this client.
     private String user;
+    
+    
 
     /**
      * Create a mail client run by user and attached to the given server.
      */
-    public MailClient(MailServer server, String user)
+    public MailClient (MailServer server, String user)
     {
         this.server = server;
         this.user = user;
+        
     }
 
     /**
@@ -28,7 +31,20 @@ public class MailClient
     {
         return server.getNextMailItem(user);
     }
-
+    
+    public int howManyMailItems()
+    {
+        return server.howManyMailItems(user);
+    }
+    
+    /**
+     * Return number of messages on server.
+     */
+    public void printhowManyMailItems()
+    {
+        MailItem item;
+        System.out.println ("server.howManyMailItems(user)");
+    }
     /**
      * Print the next mail item (if any) for this user to the text 
      * terminal.
