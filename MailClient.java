@@ -11,6 +11,8 @@ public class MailClient
     private MailServer server;
     // The user running this client.
     private String user;
+    private boolean activate;
+
     
     
 
@@ -21,23 +23,24 @@ public class MailClient
     {
         this.server = server;
         this.user = user;
-        
+        activate = false;
+    
     }
 
     /**
      * Return the next mail item (if any) for this user.
      */
-    public MailItem getNextMailItem()
+      public MailItem getNextMailItem()
     {
+        
         return server.getNextMailItem(user);
     }
-    
-   
     
     /**
      * Return number of messages on server.
      */
-    public void printhowManyMailItems()
+    
+   public void printhowManyMailItems()
     {
         int mails;
         mails = server.howManyMailItems(user);
@@ -56,6 +59,7 @@ public class MailClient
         else {
             item.print();
         }
+        
     }
 
     /**
@@ -69,4 +73,13 @@ public class MailClient
         MailItem item = new MailItem(user, to, subject, message);
         server.post(item);
     }
-}
+    
+    public void activateAutomatic()
+    {
+        activate = true;
+        MailItem item = server.getNextMailItem(user);
+        System.out.println("");
+    }    
+
+    }
+
