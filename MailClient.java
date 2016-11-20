@@ -32,18 +32,16 @@ public class MailClient
         return server.getNextMailItem(user);
     }
     
-    public int howManyMailItems()
-    {
-        return server.howManyMailItems(user);
-    }
+   
     
     /**
      * Return number of messages on server.
      */
     public void printhowManyMailItems()
     {
-        MailItem item;
-        System.out.println ("server.howManyMailItems(user)");
+        int mails;
+        mails = server.howManyMailItems(user);
+        System.out.println ("You have" + " " + mails + " " + "new" + " "+ "mails ");
     }
     /**
      * Print the next mail item (if any) for this user to the text 
